@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const { errors } = require('celebrate');
 const routes = require('./routes');
 
 const app = express();
@@ -10,7 +11,9 @@ app.use(express.json()); // Antes das rotas, falando para o Express converter o 
 
 app.use(routes);
 
-app.listen(3333); // a aplicação vai acessar a porta 3333 localhost:3333
+app.use(errors());
+
+module.exports = app;
 
 /**
  * Tipos de parâmetros:
